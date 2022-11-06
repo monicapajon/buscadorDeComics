@@ -62,4 +62,77 @@ mostrarComics = (comic) => {
       `;
   };
 
+  // MOSTRAR RESULTADOS DE BUSQUEDA //
+
+const mostrarResultados = (
+    type = "comics",
+    order = "title",
+    inputSearch = ""
+  ) => {
+    let inputContainer = "";
+    offset = paginaActual * resultadosPorPagina;
+    if (inputSearch !== "") {
+      if (type == "comics") {
+        inputContainer = `&titleStartsWith=${inputSearch}`;
+      }
+      if (type == "characters") {
+        inputContainer = `&nameStartsWith=${inputSearch}`;
+      }
+    }
+    fetch(
+      `${urlBase}${type}?apikey=${apikey}&orderBy=${order}${inputContainer}&offset=${offset}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        
+        console.log("pagina del comic:", data);
+        cantidadDeResultados = data.data.total;
+        resultados.innerHTML = "";
+  
+        data.data.results.map((selectType) => {
+          if (type == "comics") {
+            return (resultados.innerHTML += mostrarComics(selectType));
+          }
+          if (type == "characters") {
+            return (resultados.innerHTML += mostrarCharacters(selectType));
+          }
+        });
+  
+        let offset = data.data.offset;
+        onOffBotones(offset, cantidadDeResultados);
+        mostrarCantidadResultados(cantidadDeResultados);
+        verInfoComic();
+        verInfoCharact();
+      });
+  };
+  mostrarResultados();
+  
+  const buscarResultados = () => {
+    if (inputSearch.value != "") {
+      if (selectType.value === "characters") {
+        mostrarResultados(
+          selectType.value,
+          selectSortCharacter.value,
+          inputSearch.value
+        );
+      } else {
+        mostrarResultados(
+          selectType.value,
+          selectSortComic.value,
+          inputSearch.value
+        );
+      }
+    } else {
+      if (selectType.value === "characters") {
+        mostrarResultados(selectType.value, selectSortCharacter.value);
+      } else {
+        mostrarResultados(selectType.value, selectSortComic.value);
+      }
+    }
+  };
+  
+  botonSearch.onclick = () => {
+    paginaActual = 0;
+    buscarResultados();
+  };
   
