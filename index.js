@@ -206,6 +206,102 @@ chk.addEventListener("change", () => {
   console.log("modo");
 });
 
+// INFORMACION DE LOS COMICS Y LOS PERSONAJES  //
 
+const infoComic = (comicId) => { 
+    console.log("hola soy un comic");
+    offset = paginaActual * resultadosPorPagina;
+    fetch(`${urlBase}comics/${comicId}?apikey=${apikey}&offset=${offset}`)
+      .then((res) => res.json())
+      .then((data) => {
+        data.data.results.map((data) => {
+          const seccionComic = document.querySelector(".comics__section");
+          seccionComic.classList.remove("hidden");
+         
+          const publicacionFormatoAmericano = data.modified.split("T")[0];
+          const dia = publicacionFormatoAmericano.slice(8, 10);
+          const mes = publicacionFormatoAmericano.slice(5, 7);
+          const anio = publicacionFormatoAmericano.slice(0, 4);
+  
+          seccionComic.innerHTML = "";
+          seccionComic.innerHTML += `
+            <img class="comic-cover" src="${data.thumbnail.path}.jpg" data-id="${
+            data.id
+          }">
+            </img>
+            <div class="comic-details">
+              <h2 class="comic-title">${data.title}</h2>
+              <h3>Publicado:</h3> 
+              <p class="comic-published">${dia}/${mes}/${anio}</p>
+              <h3>Guionista:</h3> 
+              <p class="comic-writers">${obtenerNombreGuionista(data)}</p>
+              <h3>Description:</h3>
+              <p class="comic-description">${data.description}</p>
+            </div>
+          `;
+  
+          offset = paginaActual * resultadosPorPagina;
+          fetch(
+            `${urlBase}comics/${comicId}/characters?apikey=${apikey}&offset=${offset}`
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              const seccionCharacter = document.querySelector(".results");
+              seccionCharacter.innerHTML = "";
+    
+              const mostrarCantidadResultados2 = () => {
+                titleDeResultados.innerHTML = `Personajes`;
+                numeroDeResultados.innerHTML = `${data.data.results.length}`;
+              };
+              mostrarCantidadResultados2();
+  
+              data.data.results.map((character) => {
+                seccionCharacter.classList.remove("hidden");
+                seccionCharacter.innerHTML += `
+                <div class="character">
+                  <div class="character-img-container">
+                    <img class="character-thumbnail" src="${character.thumbnail.path}.jpg" data-id="${character.id}"></img>
+                  </div>
+                  <div class="character-name-container">
+                    <h3 class="character-name">${character.name}</h3>
+                  </div>
+                </div>
+                `;
+              });
+            });
+        });
+      });
+    onOffBotones();
+  
+  };
+  
+  obtenerNombreGuionista = (comic) => {
+    let nombreGuionistas = "";
+  
+    let escritores = comic.creators.items.filter((guionista) => {
+      return guionista.role === "writer";
+    });
+    if (escritores.length === 0) {
+      nombreGuionistas = "No hay informacion";
+    } else {
+      escritores.forEach((escritor) => {
+        nombreGuionistas += escritor.name;
+      });
+      nombreGuionistas = nombreGuionistas.substring(0, nombreGuionistas.length);
+    }
+    return nombreGuionistas;
+  };
+  
+  const verInfoComic = () => {
+    const cardsComics = document.querySelectorAll(".comic-card");
+  
+    cardsComics.forEach((card) => {
+      card.onclick = (e) => {
+        comicId = e.target.dataset.id;
+        resultados.innerHTML = "";
+        infoComic(comicId);
+      };
+    });
+  };
   
 
