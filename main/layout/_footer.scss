@@ -1,0 +1,16 @@
+/* 
+=======================
+        footer 
+=======================
+*/
+footer {
+  width: 100%;
+  padding: 30px 0 40px;
+  background-color: $color-principal;
+  color: $color-titulo;
+  margin-top: 120px;
+  text-align: center;
+}
+.dark footer {
+  background-color: $main-color-principal;
+}

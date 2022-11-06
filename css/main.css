@@ -1,0 +1,492 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/* 
+=======================
+        GENERAL 
+=======================
+*/
+* {
+  position: relative;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: #151515;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+img {
+  width: 100%;
+}
+
+.column {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  background-color: #151515;
+  color: #ffffff;
+  text-transform: uppercase;
+  border: transparent;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+button:not(:disabled):hover {
+  background-color: #ed1d23;
+}
+
+.dark .search-button {
+  background-color: #7e7e7e;
+  color: #fff;
+}
+
+button:focus,
+select:focus,
+input:focus {
+  outline-color: #ed1d23;
+}
+
+/* MODO OSCURO */
+.modo {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 7.5px;
+}
+
+body.dark {
+  background: #151515;
+  color: #fff;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  background-color: #ed1d23;
+  border-radius: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  height: 25px;
+  width: 50px;
+}
+
+.label .ball {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 30px;
+  width: 30px;
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: #020202;
+}
+
+.fa-sun {
+  color: #fff;
+}
+
+.dark .search--input {
+  border-bottom: 5px solid #ed1d23;
+  background-color: #ed1d23;
+}
+
+.dark input {
+  background-color: #151515;
+}
+
+/* 
+=======================
+        HEADER 
+=======================
+*/
+header {
+  width: 100%;
+  height: 50px;
+  background-color: #020202;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.titulo-logo {
+  background-color: #ed1d23;
+  font-family: "Bangers", cursive;
+  padding: 0 10px;
+  font-weight: bold;
+  font-size: 45px;
+  line-height: 50px;
+  margin: 0;
+}
+
+a:hover {
+  color: #020202;
+}
+
+.container-banner {
+  width: 100%;
+  min-height: 400px;
+  background-image: url(../../img/marvel-comics-women-of-marvel-poster_gc1q.jpg);
+  background-size: cover;
+  position: relative;
+}
+.container-banner::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+main {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 
+  =======================
+          SEARCH 
+  =======================
+  */
+.search {
+  margin: 60px 10px 80px;
+}
+.search__container {
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+.search__input-container {
+  position: relative;
+  min-width: 50%;
+}
+.search--input {
+  border: 0;
+  border-bottom: 2px solid #151515;
+  width: 90%;
+  padding: 5px 35px;
+  border-radius: 0;
+  font-size: 25px;
+  box-sizing: border-box;
+}
+.search__container, .search__inner-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.search__inner-container {
+  flex-wrap: wrap;
+}
+.search-button {
+  margin-left: 30px;
+  padding: 10px 15px;
+}
+
+.fa-search {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* 
+  =======================
+          RESULTADOS 
+  =======================
+  */
+.comics__section.hidden,
+.character__section.hidden {
+  display: none;
+}
+
+.comics__section,
+.character__section {
+  display: flex;
+  margin: 80px 10px 50px;
+}
+
+.comic-title,
+.character-portrait,
+.comic-cover {
+  max-width: 350px;
+  margin-right: 50px;
+}
+
+.comic-title,
+.character-name {
+  margin-top: 0;
+}
+
+.results-count,
+.results-title {
+  margin-left: 10px;
+}
+
+.results-count,
+label {
+  font-size: 13px;
+  font-weight: bold;
+  color: #7e7e7e;
+  margin-right: 12px;
+}
+
+select {
+  color: #151515;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  border: 0;
+  margin-bottom: 10px;
+  margin-left: 8px;
+}
+select:first-of-type {
+  margin-right: 30px;
+}
+
+.dark select {
+  background-color: #151515;
+  color: #fff;
+}
+
+/* 
+=======================
+        GRID 
+=======================
+*/
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  min-height: 300px;
+}
+
+.comic-card,
+.character-card {
+  width: calc(20% - 20px);
+  margin: 0 10px 40px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.comic-thumbnail {
+  height: 100%;
+  box-shadow: rgba(4, 4, 4, 0.399) 2.95px 2.95px 4.6px;
+  margin-bottom: 20px;
+  transform: translateY(0);
+  transition: 0.5s;
+}
+
+.comic-card:hover .comic-thumbnail,
+.character:hover {
+  transform: translateY(-10px);
+  filter: opacity(0.5);
+}
+
+.comic-card:hover .comic-title {
+  color: #ed1d23;
+}
+
+.character-card .character-name,
+.comic-card .comic-title {
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.comic-card .comic-title {
+  height: 64px;
+  margin-top: 25px;
+}
+
+.character-img-container {
+  flex-grow: 1;
+  border-bottom: 4px solid #ed1d23;
+  overflow: hidden;
+}
+
+.character-thumbnail {
+  height: 100%;
+  transition: 0.5s;
+}
+
+.character-name-container {
+  padding: 16px 24px 17px 20px;
+  background-color: #151515;
+  transition: 0.5s;
+}
+
+.character-card:hover .character-name-container {
+  background-color: #ed1d23;
+  border-radius: 0 0 50px 5px;
+}
+
+.character-card:hover .character-thumbnail,
+.comic-card:hover .comic-thumbnail {
+  transform: scale(1.1);
+  box-shadow: 0 26px 24px -16px rgba(104, 8, 14, 0.6);
+}
+
+.character-card .character-name,
+.character .character-name {
+  color: #fff;
+  height: 80px;
+  margin-bottom: 0;
+}
+
+.character {
+  display: flex;
+  flex-direction: column;
+  width: calc(16.6666666667% - 20px);
+  margin: 0 10px 40px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+/* 
+=======================
+        LOADER 
+=======================
+*/
+.loader--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  position: fixed;
+  z-index: 1;
+}
+
+.loader--container.hidden {
+  display: none;
+}
+
+.loader {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+.loader--container:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #ed1d23;
+  border-color: #ed1d23 transparent #ed1d23 transparent;
+  -webkit-animation: loader 1.2s linear infinite;
+          animation: loader 1.2s linear infinite;
+}
+
+@-webkit-keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* 
+=======================
+    PAGINACION 
+=======================
+*/
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pag-button {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25px;
+}
+.pag-button:disabled {
+  color: #7e7e7e;
+  border-color: #d3d3d3;
+}
+
+/* 
+=======================
+        footer 
+=======================
+*/
+footer {
+  width: 100%;
+  padding: 30px 0 40px;
+  background-color: #020202;
+  color: #fff;
+  margin-top: 120px;
+  text-align: center;
+}
+
+.dark footer {
+  background-color: #ed1d23;
+}/*# sourceMappingURL=main.css.map */

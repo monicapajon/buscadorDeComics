@@ -1,0 +1,17 @@
+button {
+  @include button;
+  @include mouse;
+  &:not(:disabled):hover {
+    background-color: $main-color-principal;
+  }
+}
+.dark .search-button {
+  background-color: $color-secundario;
+  color: $color-titulo;
+}
+
+button:focus,
+select:focus,
+input:focus {
+  outline-color: $main-color-principal;
+}
