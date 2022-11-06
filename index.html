@@ -1,12 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="img/images.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <title>ADA COMICS</title>
+  </head>
 <body>
-    
+<!-- HEADER -->
+<header>
+    <div class="column logo-container">
+    <h1 class="titulo-logo"><a href="">ADA COMICS</a></h1>
+    <div class="modo">
+      <input type="checkbox" class="checkbox" id="chk" />
+      <label class="label" for="chk">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="ball"></div>
+      </label>
+    </div>
+  </div>
+</header> 
+  <!-- BANNER -->
+  <div class="container-banner">
+    <!-- imagen banner (hero)-->
+  </div>
+  <!-- MAIN -->
+  <main class="column">
+    <!-- seccion de busqueda -->
+    <div class="search">
+      <h2 class="search__title">Búsqueda</h2>
+      <div class="search__container">
+        <!-- seccion de busqueda por input -->
+
+        
+        <div class="search__input-container">
+          <input
+            class="search--input"
+            type="text"
+            id="search-input"
+            placeholder="Ingresá tu búsqueda"
+            aria-labelledby="search-title"
+          />
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </div>
+        <!-- seccion de busqueda por filtros -->
+        <div class="search__inner-container">
+          <div class="sort-container">
+            <label for="search-type"
+              >TIPO
+              <select name="search-type" id="search-type">
+                <option value="comics">COMICS</option>
+                <option value="characters">PERSONAJES</option>
+              </select>
+            </label>
+            <label for="search-sort"
+              >ORDEN
+              <select
+                name="sort-comic"
+                class="select-sort-comics"
+                id="search-sort"
+              >
+                <option value="title" class="comic-option">A-Z</option>
+                <option value="-title" class="comic-option">Z-A</option>
+                <option value="-onsaleDate" class="comic-option">
+                  Más nuevos
+                </option>
+                <option value="onsaleDate" class="comic-option">
+                  Más viejos
+                </option>
+              </select>
+              <select
+                name="sort-character"
+                class="select-sort-character hidden"
+                id="search-sort"
+              >
+                <option value="name" class="character-option">A-Z</option>
+                <option value="-name" class="character-option">Z-A</option>
+              </select>
+            </label>
+          </div>
+          <button class="search-button" type="button">BUSCAR</button>
+        </div>
+      </div>
+    </div>
+       <!-- SECCION RESULTADOS -->
+      <div>
+        <section class="comics__section hidden">
+        </section>
+        <section class="character__section hidden">
+        </section>
+
+        <!-- SECCION RESULTADOS -->
+        <section class="results-section">
+          <h2 class="results-title">RESULTADOS</h2>
+          <p class="results-count">
+            <span class="results-number"></span> RESULTADOS
+          </p>
+
+          <div class="results">
+            <!-- SECCION-GRID -->
+          </div>
+
+          <!-- SECCION-LOADER -->
+          <div class="loader--container hidden">
+            <div class="loader"></div>
+          </div>
+
+          <!-- SECCION-PAGINACION -->
+          <div class="pagination">
+            <button
+              type="button"
+              class="pag-button button__first-left"
+              aria-label="Primera pagina"
+            >
+              <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="pag-button button__left"
+              aria-label="Pagina anterior"
+            >
+              <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="pag-button button__right"
+              aria-label="Pagina siguiente"
+            >
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="pag-button button__last"
+              aria-label="Ultima pagina"
+            >
+              <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p class="footer--copyright">Hecho por 👩‍💻 Mónica Pajón</p>
+      </footer>
+      <script src="index.js"></script>
+    </body>
+  </html>
 </body>
 </html>
