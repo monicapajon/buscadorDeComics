@@ -29,6 +29,70 @@
       </label>
     </div>
   </div>
-</header>    
+</header> 
+  <!-- BANNER -->
+  <div class="container-banner">
+    <!-- imagen banner (hero)-->
+  </div>
+  <!-- MAIN -->
+  <main class="column">
+    <!-- seccion de busqueda -->
+    <div class="search">
+      <h2 class="search__title">Búsqueda</h2>
+      <div class="search__container">
+        <!-- seccion de busqueda por input -->
+
+        
+        <div class="search__input-container">
+          <input
+            class="search--input"
+            type="text"
+            id="search-input"
+            placeholder="Ingresá tu búsqueda"
+            aria-labelledby="search-title"
+          />
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </div>
+        <!-- seccion de busqueda por filtros -->
+        <div class="search__inner-container">
+          <div class="sort-container">
+            <label for="search-type"
+              >TIPO
+              <select name="search-type" id="search-type">
+                <option value="comics">COMICS</option>
+                <option value="characters">PERSONAJES</option>
+              </select>
+            </label>
+            <label for="search-sort"
+              >ORDEN
+              <select
+                name="sort-comic"
+                class="select-sort-comics"
+                id="search-sort"
+              >
+                <option value="title" class="comic-option">A-Z</option>
+                <option value="-title" class="comic-option">Z-A</option>
+                <option value="-onsaleDate" class="comic-option">
+                  Más nuevos
+                </option>
+                <option value="onsaleDate" class="comic-option">
+                  Más viejos
+                </option>
+              </select>
+              <select
+                name="sort-character"
+                class="select-sort-character hidden"
+                id="search-sort"
+              >
+                <option value="name" class="character-option">A-Z</option>
+                <option value="-name" class="character-option">Z-A</option>
+              </select>
+            </label>
+          </div>
+          <button class="search-button" type="button">BUSCAR</button>
+        </div>
+      </div>
+    </div>
+       
 </body>
 </html>
