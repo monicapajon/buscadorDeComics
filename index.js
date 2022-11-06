@@ -136,3 +136,59 @@ const mostrarResultados = (
     buscarResultados();
   };
   
+  // PAGINACION //
+
+proximaPagina.onclick = () => {
+    resultados.innerHTML = "";
+    paginaActual++;
+    buscarResultados();
+  };
+  
+  anteriorPagina.onclick = () => {
+    resultados.innerHTML = "";
+    paginaActual--;
+    buscarResultados();
+  };
+  
+  primeraPagina.onclick = () => {
+    resultados.innerHTML = "";
+    paginaActual = 0;
+    buscarResultados();
+  };
+  
+  ultimaPagina.onclick = () => {
+    restoResultados = cantidadDeResultados % resultadosPorPagina;
+    if (restoResultados > 0) {
+      paginaActual =
+        (cantidadDeResultados - restoResultados) / resultadosPorPagina;
+    } else {
+      paginaActual = cantidadDeResultados / resultadosPorPagina - 1;
+    }
+    buscarResultados();
+  };
+  
+  // =>deshabilitar paginacion
+  
+  onOffBotones = (offset = "0", cantidadDeResultados = "0") => {
+    if (paginaActual == 0) {
+      primeraPagina.disabled = true;
+      anteriorPagina.disabled = true;
+    } else {
+      primeraPagina.disabled = false;
+      anteriorPagina.disabled = false;
+    }
+    if (offset + 20 >= cantidadDeResultados) {
+      proximaPagina.disabled = true;
+      ultimaPagina.disabled = true;
+    } else {
+      proximaPagina.disabled = false;
+      ultimaPagina.disabled = false;
+    }
+  };
+  // desactivar boton search
+  
+  offSearchBoton = () => {
+    document.querySelector(".search-button").disabled = true;
+  };
+
+  
