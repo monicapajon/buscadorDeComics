@@ -304,4 +304,66 @@ const infoComic = (comicId) => {
     });
   };
   
+// VER LA INFORMACION DEL PERSONAJE Y LOS COMICS EN LOS QUE SE ENCUENTRA: //
 
+const infoCharacter = (characterId) => {
+    console.log("soy un character");
+    fetch(
+      `${urlBase}characters/${characterId}?apikey=${apikey}&offset=${offset}&orderBy=name`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        data.data.results.map((data) => {
+          const sectionChar = document.querySelector(".character__section");
+          sectionChar.classList.remove("hidden");
+          sectionChar.innerHTML = "";
+          sectionChar.innerHTML += `
+          <div class="character-card" data-id="${data.id}">
+            <div class="character-img-container">
+              <img class="comic-thumbnail" src="${data.thumbnail.path}.jpg" data-id="${data.id}"></img>
+            </div>
+            <div class="character-name-container">
+              <h3 class="character-name">${data.name}</h3>
+              
+            </div>
+          </div>`;
+  
+          fetch(
+            `${urlBase}characters/${characterId}/comics?apikey=${apikey}&offset=${offset}`
+          )
+            .then((res) => res.json())
+            .then((data) => {
+  
+              const sectionComic = document.querySelector(".results");
+              sectionComic.innerHTML = "";
+          
+  
+              data.data.results.map((comic) => {
+                sectionComic.classList.remove("hidden");
+                sectionComic.innerHTML += `
+                <div class="comic-card">
+                  <div class="comic-img-container">
+                    <img src="${comic.thumbnail.path}.jpg" alt="" class="comic-thumbnail" data-id="${comic.id}"/>
+                  </div>
+                  <h3 class="comic-title">${comic.title}</h3>
+                </div>
+              `;
+              });
+            });
+        });
+      });
+    onOffBotones();
+  };
+  
+  const verInfoCharact = () => {
+    const cardsCharact = document.querySelectorAll(".character-card");
+  
+    cardsCharact.forEach((card) => {
+      card.onclick = (e) => {
+        characterId = e.target.dataset.id;
+        resultados.innerHTML = "";
+        infoCharacter(characterId);
+      };
+    });
+  };
+  
