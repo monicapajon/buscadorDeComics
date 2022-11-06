@@ -37,4 +37,29 @@ selectType.onchange = () => {
     }
   };
 
+  // MOSTRAR CARDS //
+
+mostrarComics = (comic) => {
+    return `
+      <div class="comic-card">
+          <div class="comic-img-container">
+              <img src="${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}" alt="" class="comic-thumbnail" data-id="${comic.id}"/>
+          </div>
+          <h3 class="comic-title">${comic.title}</h3>
+      </div>
+      `;
+  };
+  mostrarCharacters = (character) => {
+    return `
+      <div class="character-card">
+          <div class="character-img-container">
+              <img src="${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}" alt="" class="character-thumbnail" data-id="${character.id}" />
+          </div>
+          <div class="character-name-container">
+              <h3 class="character-name">${character.name}</h3>
+          </div>
+      </div>
+      `;
+  };
+
   
