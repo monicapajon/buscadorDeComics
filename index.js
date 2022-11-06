@@ -12,3 +12,15 @@ const primeraPagina = document.querySelector(".button__first-left");
 const ultimaPagina = document.querySelector(".button__last");
 const proximaPagina = document.querySelector(".button__right");
 const anteriorPagina = document.querySelector(".button__left");
+
+// =>SEARCH Y SELECT
+const inputSearch = document.querySelector(".search--input");
+const botonSearch = document.querySelector(".search-button");
+const selectType = document.querySelector("#search-type");
+const selectSort = document.querySelector("#search-sort");
+const selectSortComic = document.querySelector(".select-sort-comics");
+const selectSortCharacter = document.querySelector(".select-sort-character");
+
+const numeroDeResultados = document.querySelector(".results-number");
+const titleDeResultados = document.querySelector(".results-title");
+
