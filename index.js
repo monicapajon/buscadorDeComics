@@ -197,6 +197,15 @@ const mostrarCantidadResultados = (cantidadDeResultados) => {
     numeroDeResultados.innerHTML = `${cantidadDeResultados}`;
   };
 
-  
+  // MODO OSCURO //
+
+const chk = document.getElementById("chk");
+
+chk.addEventListener("change", () => {
+  document.body.classList.toggle("dark");
+  console.log("modo");
+});
+
+
   
 
