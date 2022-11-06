@@ -191,4 +191,12 @@ proximaPagina.onclick = () => {
     document.querySelector(".search-button").disabled = true;
   };
 
+  // => MOSTRAR CANTIDAD DE RESULTADOS //
+
+const mostrarCantidadResultados = (cantidadDeResultados) => {
+    numeroDeResultados.innerHTML = `${cantidadDeResultados}`;
+  };
+
   
+  
+
