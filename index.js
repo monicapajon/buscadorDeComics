@@ -24,3 +24,17 @@ const selectSortCharacter = document.querySelector(".select-sort-character");
 const numeroDeResultados = document.querySelector(".results-number");
 const titleDeResultados = document.querySelector(".results-title");
 
+// SELECCION //
+
+selectType.onchange = () => {
+    if (selectType.value == "comics") {
+      selectSortComic.classList.remove("hidden");
+      selectSortCharacter.classList.add("hidden");
+    }
+    if (selectType.value == "characters") {
+      selectSortComic.classList.add("hidden");
+      selectSortCharacter.classList.remove("hidden");
+    }
+  };
+
+  
